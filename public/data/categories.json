@@ -1,0 +1,34 @@
+[
+  {
+    "id": "decorative",
+    "title": "Finisaje Decorative",
+    "description": "Vopsele decorative pentru interioare de lux",
+    "image": "/images/category-decorative.jpg",
+    "link": "https://ro.san-marco.com/produse-cu-efecte-decorative",
+    "featured": true
+  },
+  {
+    "id": "exterior",
+    "title": "Fațade & Exterior",
+    "description": "Soluții profesionale pentru fațade durabile",
+    "image": "/assets/images/categorie-exterioare.jpg",
+    "link": "https://ro.san-marco.com/spatii-exterior",
+    "featured": true
+  },
+  {
+    "id": "wood-metal",
+    "title": "Lemn & Metal",
+    "description": "Protecție și finisare pentru lemn și metal",
+    "image": "/assets/images/categorie-lemn-metal.jpg",
+    "link": "https://ro.san-marco.com/emailuri-si-produse-de-fond-acoperitoare-pentru-fier-si-lemn",
+    "featured": true
+  },
+  {
+    "id": "primers",
+    "title": "Fixativ & Pregătire",
+    "description": "Baza perfectă pentru orice finisaj",
+    "image": "/assets/images/categorie-grunduri.jpg",
+    "link": "https://ro.san-marco.com/finisaje-murale",
+    "featured": true
+  }
+]
