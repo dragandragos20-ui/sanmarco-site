@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -54,40 +54,19 @@ const HeroCarousel = () => {
   }, []);
 
   // [HOOK:DATA_HERO_AUTOPLAY] – aici se controlează autoplay standard
-  const autoplayPlugin = Autoplay({
-    delay: 6000,
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-    playOnInit: true
-  });
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      skipSnaps: false,
-      duration: 30
-    },
-    [autoplayPlugin]
-  );
+  const autoplay = useRef(Autoplay({ delay: 4000, stopOnInteraction: false }));
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [autoplay.current]);
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi && typeof emblaApi.scrollPrev === 'function') {
-      try {
-        emblaApi.scrollPrev();
-      } catch (error) {
-        console.warn('ScrollPrev error:', error);
-      }
-    }
+    if (!emblaApi) return;
+    emblaApi.scrollPrev();
+    emblaApi.plugins()?.autoplay?.reset();
   }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi && typeof emblaApi.scrollNext === 'function') {
-      try {
-        emblaApi.scrollNext();
-      } catch (error) {
-        console.warn('ScrollNext error:', error);
-      }
-    }
+    if (!emblaApi) return;
+    emblaApi.scrollNext();
+    emblaApi.plugins()?.autoplay?.reset();
   }, [emblaApi]);
 
   const onSelect = useCallback(() => {
@@ -109,41 +88,39 @@ const HeroCarousel = () => {
     fetchSlides();
   }, [fetchSlides]);
 
-  // Control autoplay on hover
-  useEffect(() => {
-    if (!emblaApi || !autoplayPlugin) return;
-    
-    // Verificări defensive pentru internalEngine
-    try {
-      if (isHovered) {
-        if (autoplayPlugin && typeof autoplayPlugin.stop === 'function') {
-          autoplayPlugin.stop();
-        }
-      } else {
-        if (autoplayPlugin && typeof autoplayPlugin.play === 'function') {
-          autoplayPlugin.play();
-        }
-      }
-    } catch (error) {
-      console.warn('Autoplay control error:', error);
-    }
-  }, [emblaApi, autoplayPlugin, isHovered]);
-
   // Keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        scrollPrev();
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        scrollNext();
+    if (!emblaApi) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        emblaApi.scrollPrev();
+        emblaApi.plugins()?.autoplay?.reset();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        emblaApi.scrollNext();
+        emblaApi.plugins()?.autoplay?.reset();
       }
     };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [emblaApi]);
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [scrollPrev, scrollNext]);
+  useEffect(() => {
+    if (!emblaApi) return;
+    const plugin = emblaApi.plugins()?.autoplay;
+    if (!plugin) return;
+    const root = emblaApi.rootNode();
+    const onEnter = () => plugin.stop();
+    const onLeave = () => plugin.play();
+    root.addEventListener('mouseenter', onEnter);
+    root.addEventListener('mouseleave', onLeave);
+    return () => {
+      root.removeEventListener('mouseenter', onEnter);
+      root.removeEventListener('mouseleave', onLeave);
+    };
+  }, [emblaApi]);
 
   // Handle slide click
   const handleSlideClick = (targetUrl: string) => {
