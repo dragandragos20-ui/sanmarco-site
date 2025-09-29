@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cadoro-gold",
+    "name": "Cadoro Gold",
+    "category": "Decorative",
+    "description": "Efect metalic auriu pentru interioare de lux",
+    "price": "285 RON",
+    "image": "/images/product-cadoro-gold.jpg",
+    "featured": true,
+    "rating": 4.9,
+    "inStock": true,
+    "link": "https://ro.san-marco.com/product/20227035/cadoro"
+  },
+  {
+    "id": "marmorino-classico",
+    "name": "Marmorino Classico",
+    "category": "Decorative",
+    "description": "Tencuială decorativă venetiană autentică",
+    "price": "195 RON",
+    "image": "/assets/images/product-marmorino-classico.jpg",
+    "featured": true,
+    "rating": 4.8,
+    "inStock": true,
+    "link": "https://ro.san-marco.com/product/20227026/marmorino-classico"
+  },
+  {
+    "id": "marcopolo-luxury",
+    "name": "Marcopolo Luxury",
+    "category": "Decorative",
+    "description": "Vopsea decorativă cu efect de textură metalizată fină",
+    "price": "225 RON",
+    "image": "/assets/images/product-marcopolo-luxury.jpg",
+    "featured": true,
+    "rating": 4.8,
+    "inStock": true,
+    "link": "https://ro.san-marco.com/product/20227130/marcopolo-luxury"
+  },
+  {
+    "id": "glittery",
+    "name": "Glittery",
+    "category": "Decorative",
+    "description": "Cristale de argint în gel pentru vopsele pe bază de apă și finisaje",
+    "price": "145 RON",
+    "image": "/assets/images/product-glittery.jpg",
+    "featured": true,
+    "rating": 4.7,
+    "inStock": true,
+    "link": "https://ro.san-marco.com/product/23674497/glittery"
+  },
+  {
+    "id": "cadoro-velvet",
+    "name": "Cadoro Velvet",
+    "category": "Decorative",
+    "description": "Vopsea decorativă cu efect catifelat",
+    "price": "265 RON",
+    "image": "/assets/images/product-cadoro-velvet.jpg",
+    "featured": true,
+    "rating": 4.9,
+    "inStock": true,
+    "link": "https://ro.san-marco.com/product/20227069/cadoro-velvet"
+  }
+]

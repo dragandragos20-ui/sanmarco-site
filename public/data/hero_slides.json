@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "slide-1",
+    "media": {
+      "type": "image",
+      "url": "/images/slide-1-san-marco-art.jpg"
+    },
+    "heading_primary": "San Marco",
+    "heading_secondary": "Arta culorilor italiene",
+    "category_label": "Decorative",
+    "target_url": "https://ro.san-marco.com/culorile-italiei"
+  },
+  {
+    "slug": "slide-2",
+    "media": {
+      "type": "image",
+      "url": "/assets/images/hero-2-culorile-in-care-te-regasesti.jpg"
+    },
+    "heading_primary": "San Marco",
+    "heading_secondary": "Culorile în care te regăsești",
+    "category_label": "Decorative",
+    "target_url": "https://ro.san-marco.com/trend-culoare-pentru-pereti-2025"
+  },
+  {
+    "slug": "slide-3",
+    "media": {
+      "type": "image",
+      "url": "/assets/images/hero-3-allover.jpg"
+    },
+    "heading_primary": "ALL OVER",
+    "heading_secondary": "Înveliș decorativ monocomponent pentru pardoseli, plafoane și pereți continui",
+    "category_label": "Decorative",
+    "target_url": "https://ro.san-marco.com/allover-invelis-decorativ-monocomponent-pentru-pardoseli-plafoane-si-pereti-continui"
+  }
+]
